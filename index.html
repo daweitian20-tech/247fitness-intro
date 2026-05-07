@@ -369,7 +369,8 @@
 
     <!-- 微信内直接选门店 -->
     <div class="wechat-cta" id="wechatCta">
-        <a class="btn" id="openMiniappBtn">📱 立即选门店办理</a>
+        <a class="btn" id="openMiniappBtn"
+           href="#小程序://247FITNESS/门店选择/6C1m7DTHaK8MdUg">📱 立即选门店办理</a>
         <div class="hint">点击按钮跳转小程序 → 选择门店 → 在线办理入会</div>
     </div>
 
@@ -553,7 +554,8 @@
 
     <!-- 底部再次显示办理入口 -->
     <div class="wechat-cta" id="wechatCta2" style="margin:0 0 16px;border-top:none;">
-        <a class="btn" id="openMiniappBtn2">📱 立即选门店办理</a>
+        <a class="btn" id="openMiniappBtn2"
+           href="#小程序://247FITNESS/门店选择/6C1m7DTHaK8MdUg">📱 立即选门店办理</a>
         <div class="hint" style="margin-top:8px;">点击跳转 24/7 FITNESS 小程序 · 在线选门店 · 自助办理入会</div>
     </div>
 
@@ -564,33 +566,10 @@
     </div>
 
     <script>
-    (function() {
-        var isWechat = navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1;
-
-        // 小程序 URL Scheme（在微信内置浏览器中有效）
-        var miniappUrl = '#小程序://247FITNESS/门店选择/6C1m7DTHaK8MdUg';
-
-        // 如果不是微信环境，显示提示
-        if (!isWechat) {
-            document.getElementById('browserTip').style.display = 'block';
-        }
-
-        // 点击事件：尝试打开小程序
-        function openMiniapp(e) {
-            if (isWechat) {
-                // 微信内：通过 location.href 跳转小程序
-                window.location.href = miniappUrl;
-            } else {
-                // 非微信：提示用户复制链接到微信
-                var tip = document.getElementById('browserTip');
-                tip.style.display = 'block';
-                tip.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
-        document.getElementById('openMiniappBtn').addEventListener('click', openMiniapp);
-        document.getElementById('openMiniappBtn2').addEventListener('click', openMiniapp);
-    })();
+    // 非微信环境显示提示
+    if (navigator.userAgent.toLowerCase().indexOf('micromessenger') === -1) {
+        document.getElementById('browserTip').style.display = 'block';
+    }
     </script>
 </body>
 </html>
